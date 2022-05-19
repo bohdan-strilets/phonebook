@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-project-template/static/css/main.b36b98fa.css",
-    "main.js": "/react-project-template/static/js/main.652f198c.js",
-    "index.html": "/react-project-template/index.html",
-    "main.b36b98fa.css.map": "/react-project-template/static/css/main.b36b98fa.css.map",
-    "main.652f198c.js.map": "/react-project-template/static/js/main.652f198c.js.map"
+    "main.css": "/typescript-hw-08-phonebook/static/css/main.b36b98fa.css",
+    "main.js": "/typescript-hw-08-phonebook/static/js/main.652f198c.js",
+    "index.html": "/typescript-hw-08-phonebook/index.html",
+    "main.b36b98fa.css.map": "/typescript-hw-08-phonebook/static/css/main.b36b98fa.css.map",
+    "main.652f198c.js.map": "/typescript-hw-08-phonebook/static/js/main.652f198c.js.map"
   },
   "entrypoints": [
     "static/css/main.b36b98fa.css",

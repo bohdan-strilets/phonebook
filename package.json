@@ -34,8 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint:js": "eslint src/**/*.{js,jsx,ts,tsx}",
-    "prepare": "husky install",
-    "tsc": "tsc"
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [

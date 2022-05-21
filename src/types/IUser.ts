@@ -1,7 +1,8 @@
 type IUser = {
-  name?: string;
-  email?: string;
-  password?: string;
+  id?: string | null;
+  name?: string | null;
+  email?: string | null;
+  password?: string | null;
 };
 
 export default IUser;

@@ -44,20 +44,19 @@ const logoutUser = createAsyncThunk<IAuthState>('auth/logout', async () => {
 });
 
 const getCurrentUser = createAsyncThunk<
-  IUser,
+  { name: string; email: string },
   undefined,
-  {
-    state: RootState;
-  }
+  { state: RootState }
 >('auth/refresh', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   const persistedToken = state.auth.token;
 
+  if (persistedToken === null) {
+    return;
+  }
+
+  token.set(persistedToken);
   try {
-    if (persistedToken === null) {
-      return;
-    }
-    token.set(persistedToken);
     const { data } = await axios.get('users/current');
     return data;
   } catch (error) {

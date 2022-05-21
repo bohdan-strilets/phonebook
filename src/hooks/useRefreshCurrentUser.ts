@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import operations from 'redux/auth/auth-operations';
 import { getIsRefreshing } from 'redux/auth/auth-selecors';
-
 import { useAppDispatch } from './useAppDispatch';
 import { useAppSelector } from './useAppSelector';
 

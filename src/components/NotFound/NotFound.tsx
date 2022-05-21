@@ -2,7 +2,7 @@ import { Wrapper, Title, Text, StyledLink } from './NotFound.styled';
 import Container from 'components/Container';
 import IErrorMessage from 'types/IErrorMessage';
 
-const NotFound = ({ data, status }: IErrorMessage) => {
+const NotFound = ({ data = '', status = '' }: IErrorMessage) => {
   return (
     <Container>
       <Wrapper>

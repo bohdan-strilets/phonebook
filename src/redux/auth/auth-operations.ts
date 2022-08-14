@@ -14,9 +14,7 @@ const registerUser = createAsyncThunk<IAuthState, IUser>(
       const { data } = await axios.post('/users/signup', user);
       token.set(data.token);
       return data;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   },
 );
 
@@ -27,9 +25,7 @@ const loginUser = createAsyncThunk<IAuthState, IUser>(
       const { data } = await axios.post('users/login', user);
       token.set(data.token);
       return data;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   },
 );
 
@@ -38,9 +34,7 @@ const logoutUser = createAsyncThunk<IAuthState>('auth/logout', async () => {
     const { data } = await axios.post('users/logout');
     token.unset();
     return data;
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 });
 
 const getCurrentUser = createAsyncThunk<
@@ -59,9 +53,7 @@ const getCurrentUser = createAsyncThunk<
   try {
     const { data } = await axios.get('users/current');
     return data;
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 });
 
 const operations = {

@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="/typescript-hw-08-phonebook/">
+      <BrowserRouter basename="/phonebook">
         <App />
       </BrowserRouter>
     </Provider>

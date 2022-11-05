@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/phonebook/static/css/main.ad8b761c.css",
-    "main.js": "/phonebook/static/js/main.aa3f7f56.js",
+    "main.js": "/phonebook/static/js/main.c3900954.js",
     "static/js/846.a7583816.chunk.js": "/phonebook/static/js/846.a7583816.chunk.js",
     "static/js/821.2d547b04.chunk.js": "/phonebook/static/js/821.2d547b04.chunk.js",
     "static/js/42.d3be7b60.chunk.js": "/phonebook/static/js/42.d3be7b60.chunk.js",
@@ -14,7 +14,7 @@
     "static/media/homeBg.jpg": "/phonebook/static/media/homeBg.97001d78ceb2f1613f86.jpg",
     "index.html": "/phonebook/index.html",
     "main.ad8b761c.css.map": "/phonebook/static/css/main.ad8b761c.css.map",
-    "main.aa3f7f56.js.map": "/phonebook/static/js/main.aa3f7f56.js.map",
+    "main.c3900954.js.map": "/phonebook/static/js/main.c3900954.js.map",
     "846.a7583816.chunk.js.map": "/phonebook/static/js/846.a7583816.chunk.js.map",
     "821.2d547b04.chunk.js.map": "/phonebook/static/js/821.2d547b04.chunk.js.map",
     "42.d3be7b60.chunk.js.map": "/phonebook/static/js/42.d3be7b60.chunk.js.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.ad8b761c.css",
-    "static/js/main.aa3f7f56.js"
+    "static/js/main.c3900954.js"
   ]
 }

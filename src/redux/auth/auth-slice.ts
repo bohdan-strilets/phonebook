@@ -5,7 +5,7 @@ import { persistReducer } from 'redux-persist';
 import IAuthState from 'types/IAuthState';
 
 const initialState = {
-  user: { name: 'null', email: 'null' },
+  user: { name: 'null', email: 'null', subscription: null, avatarURL: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,

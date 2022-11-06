@@ -10,3 +10,11 @@ export const Wrapper = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const Group = styled.div`
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;

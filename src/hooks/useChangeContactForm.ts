@@ -4,28 +4,32 @@ import {
   useGetContactsQuery,
 } from 'redux/contacts/contact-api';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import IContact from 'types/IContact';
+import { IContact, IContactToServer } from 'types/IContact';
 
 const useChangeContactForm = () => {
   let currentContact: IContact | null | undefined = null;
-  let initialValues: IContact = {};
+  let initialValues = {} as IContactToServer;
 
   const { contactId } = useParams();
   const navigate = useNavigate();
 
   const [chengeContact, { isLoading: isUpdating }] = useChangeContactMutation();
-  const { data: contacts } = useGetContactsQuery();
+  const { data } = useGetContactsQuery();
+  const contacts = data?.data?.contacts;
 
   if (contacts) {
-    currentContact = contacts.find(({ id }) => id === contactId);
+    currentContact = contacts.find(
+      ({ _id }: { _id: string }) => _id === contactId,
+    );
 
     initialValues = {
       name: currentContact?.name,
-      number: currentContact?.number,
+      phone: currentContact?.phone,
+      email: currentContact?.email,
     };
   }
 
-  const onSubmitForm = (values: IContact) => {
+  const onSubmitForm = (values: IContactToServer) => {
     if (JSON.stringify(values) === JSON.stringify(initialValues)) {
       Notify.warning('Try to change something first.');
       return;

@@ -6,7 +6,8 @@ import { useGetContactsQuery } from 'redux/contacts/contact-api';
 import AddButton from 'components/AddButton';
 
 const ContactsPage: React.FC = () => {
-  const { data: contacts } = useGetContactsQuery();
+  const { data } = useGetContactsQuery();
+  const contacts = data?.data?.contacts;
 
   return (
     <Container title="Contacts">

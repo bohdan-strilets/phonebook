@@ -1,26 +1,27 @@
 import {
   Wrapper,
   GroupWrapper,
-  UserIcon,
+  Avatar,
   TextWrapper,
   Text,
   UserName,
   Email,
   Button,
 } from './UserBar.styled';
-import { getName, getEmail } from 'redux/auth/auth-selecors';
+import { getName, getEmail, getAvatar } from 'redux/auth/auth-selecors';
 import useLogoutUser from 'hooks/useLogoutUser';
 import { useAppSelector } from 'hooks/useAppSelector';
 
 function UserBar() {
   const userName = useAppSelector(state => getName(state));
   const userEmail = useAppSelector(state => getEmail(state));
+  const userAvatar = useAppSelector(state => getAvatar(state));
   const logout = useLogoutUser();
 
   return (
     <Wrapper>
       <GroupWrapper>
-        <UserIcon />
+        <Avatar src={userAvatar as string} alt="Avatar" />
         <TextWrapper>
           <Text>
             Welcome, <UserName>{userName}</UserName>

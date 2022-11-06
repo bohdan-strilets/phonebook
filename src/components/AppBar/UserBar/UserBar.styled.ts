@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { BiUser } from 'react-icons/bi';
 
 export const Wrapper = styled.div`
   @media screen and (min-width: 1440px) {
@@ -21,10 +20,9 @@ export const GroupWrapper = styled.div`
   }
 `;
 
-export const UserIcon = styled(BiUser)`
-  background-color: var(--accent-text-color);
-  color: var(--second-text-color);
-  padding: 10px;
+export const Avatar = styled.img`
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 `;
 

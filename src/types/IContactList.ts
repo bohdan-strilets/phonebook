@@ -1,4 +1,4 @@
-import IContact from './IContact';
+import { IContact } from './IContact';
 
 type IContactList = IContact[];
 

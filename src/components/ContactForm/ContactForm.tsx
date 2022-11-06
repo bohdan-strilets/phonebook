@@ -1,13 +1,16 @@
+import { Formik, Form } from 'formik';
+import GoBack from 'components/GoBack';
+
+import IContactForm from 'types/IContactForm';
+
 import {
   TitlePage,
   Label,
+  Error,
   Title,
   StyledField,
   Button,
 } from './ContactForm.styled';
-import { Formik, Form, ErrorMessage } from 'formik';
-import GoBack from 'components/GoBack';
-import IContactForm from 'types/IContactForm';
 
 const ContactForm = ({
   title,
@@ -35,21 +38,29 @@ const ContactForm = ({
                 onChange={handleChange}
                 value={values.name}
               />
-              <ErrorMessage name="name" component="div" />
+              <Error name="name" component="div" />
             </Label>
             <Label>
-              <Title>Number</Title>
+              <Title>Phone</Title>
               <StyledField
                 type="tel"
-                name="number"
+                name="phone"
                 onChange={handleChange}
-                value={values.number}
+                value={values.phone}
               />
-              <ErrorMessage name="number" component="div" />
+              <Error name="phone" component="div" />
             </Label>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? '...' : buttonLabel}
-            </Button>
+            <Label>
+              <Title>Email</Title>
+              <StyledField
+                type="email"
+                name="email"
+                onChange={handleChange}
+                value={values.email}
+              />
+              <Error name="email" component="div" />
+            </Label>
+            <Button type="submit">{isSubmitting ? '...' : buttonLabel}</Button>
           </Form>
         )}
       </Formik>

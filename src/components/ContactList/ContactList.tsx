@@ -21,13 +21,33 @@ const ContactList: React.FC = () => {
       <List>
         {contacts &&
           filteredContactList &&
-          filteredContactList.map(({ id, name, number }) => {
-            return (
-              <Item key={id}>
-                <Contact id={id} name={name} number={number} />
-              </Item>
-            );
-          })}
+          filteredContactList.map(
+            ({
+              _id,
+              name,
+              phone,
+              email,
+              favorite,
+            }: {
+              _id: string;
+              name: string;
+              phone: string;
+              email: string;
+              favorite: boolean;
+            }) => {
+              return (
+                <Item key={_id}>
+                  <Contact
+                    id={_id}
+                    name={name}
+                    phone={phone}
+                    email={email}
+                    favorite={favorite}
+                  />
+                </Item>
+              );
+            },
+          )}
       </List>
     </>
   );

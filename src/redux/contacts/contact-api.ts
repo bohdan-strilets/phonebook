@@ -1,13 +1,12 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from 'redux/store';
-import IContact from 'types/IContact';
-import IContactList from 'types/IContactList';
+import { IContactToServer } from 'types/IContact';
 import API_URL from 'utilities/apiUrl';
 
 export const contactApi = createApi({
   reducerPath: 'contactApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: API_URL,
+    baseUrl: `${API_URL}api/contacts`,
 
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token;
@@ -21,22 +20,22 @@ export const contactApi = createApi({
   tagTypes: ['Contacts'],
 
   endpoints: builder => ({
-    getContacts: builder.query<IContactList, void>({
-      query: () => ({ url: '/contacts' }),
+    getContacts: builder.query<any, void>({
+      query: () => ({ url: '/' }),
       providesTags: ['Contacts'],
     }),
 
     deleteContact: builder.mutation({
       query: (contactId: string) => ({
-        url: `/contacts/${contactId}`,
+        url: `/${contactId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Contacts'],
     }),
 
     createContact: builder.mutation({
-      query: (newContact: IContact) => ({
-        url: '/contacts',
+      query: (newContact: IContactToServer) => ({
+        url: '/',
         method: 'POST',
         body: newContact,
       }),
@@ -45,9 +44,18 @@ export const contactApi = createApi({
 
     changeContact: builder.mutation({
       query: ({ contactId, ...contact }) => ({
-        url: `/contacts/${contactId}`,
-        method: 'PATCH',
+        url: `/${contactId}`,
+        method: 'PUT',
         body: contact,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+
+    changeFavorite: builder.mutation({
+      query: ({ contactId, ...favorite }) => ({
+        url: `/${contactId}/favorite`,
+        method: 'PATCH',
+        body: favorite,
       }),
       invalidatesTags: ['Contacts'],
     }),
@@ -59,4 +67,5 @@ export const {
   useDeleteContactMutation,
   useCreateContactMutation,
   useChangeContactMutation,
+  useChangeFavoriteMutation,
 } = contactApi;

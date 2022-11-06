@@ -1,4 +1,4 @@
-import { Wrapper } from './AppBar.styled';
+import { Wrapper, Group } from './AppBar.styled';
 import Container from 'components/Container';
 import Logo from './Logo';
 import Navigations from './Navigations';
@@ -13,8 +13,10 @@ const AppBar: React.FC = () => {
   return (
     <Container>
       <Wrapper>
-        <Logo />
-        <Navigations />
+        <Group>
+          <Logo />
+          <Navigations />
+        </Group>
         {isLoggedIn ? <UserBar /> : <AuthNav />}
       </Wrapper>
     </Container>

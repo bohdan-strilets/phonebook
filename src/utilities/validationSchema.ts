@@ -2,7 +2,8 @@ import * as yup from 'yup';
 
 export const contactSchema = yup.object({
   name: yup.string().required().min(3).max(30),
-  number: yup.number().required(),
+  phone: yup.number().required(),
+  email: yup.string().email(),
 });
 
 export const userLoginSchema = yup.object({

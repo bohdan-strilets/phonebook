@@ -25,23 +25,23 @@ export const authSlice = createSlice({
     builder
       .addCase(operations.registerUser.fulfilled, (state, action) => {
         try {
-          state.user = action.payload.user;
-          state.token = action.payload.token;
+          state.user = action.payload.data.user;
+          state.token = action.payload.data.token;
           state.isLoggedIn = true;
         } catch (error) {}
       })
 
       .addCase(operations.loginUser.fulfilled, (state, action) => {
         try {
-          state.user = action.payload.user;
-          state.token = action.payload.token;
+          state.user = action.payload.data.user;
+          state.token = action.payload.data.token;
           state.isLoggedIn = true;
         } catch (error) {}
       })
 
       .addCase(operations.logoutUser.fulfilled, state => {
         try {
-          state.user = { name: null, email: null };
+          state.user = initialState.user;
           state.token = null;
           state.isLoggedIn = false;
         } catch (error) {}
@@ -62,7 +62,7 @@ export const authSlice = createSlice({
       .addCase(operations.getCurrentUser.fulfilled, (state, action) => {
         try {
           if (action.payload) {
-            state.user = action.payload;
+            state.user = action.payload.user;
             state.isLoggedIn = true;
           }
           state.isRefreshing = false;

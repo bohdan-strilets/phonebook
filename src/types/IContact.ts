@@ -1,7 +1,17 @@
-type IContact = {
-  id?: string;
-  name?: string;
-  number?: string;
+export type IContact = {
+  _id: string;
+  name: string;
+  phone: string;
+  email: string;
+  favorite: boolean;
+  owner: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
-export default IContact;
+export type IContactToServer = {
+  id?: string;
+  name?: string;
+  phone?: string;
+  email?: string;
+};

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 
 export const TitlePage = styled.h2`
   margin-bottom: 30px;
@@ -11,6 +11,11 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+`;
+
+export const Error = styled(ErrorMessage)`
+  margin-top: 8px;
+  color: red;
 `;
 
 export const Title = styled.span`

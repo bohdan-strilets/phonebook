@@ -10,7 +10,7 @@ const ChangeContactPage: React.FC = () => {
   return (
     <Container>
       <ContactForm
-        title={`Edit Contact ${initialValues?.name}`}
+        title={`Edit Contact ${initialValues.name}`}
         initialValues={initialValues}
         onSubmitForm={onSubmitForm}
         validationSchema={contactSchema}

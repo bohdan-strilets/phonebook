@@ -3,15 +3,16 @@ import { getFilter } from 'redux/contacts/contact-selectors';
 import { useAppSelector } from './useAppSelector';
 
 const useFiltredContacts = () => {
-  const { data: contacts } = useGetContactsQuery();
+  const { data } = useGetContactsQuery();
   const filter = useAppSelector(state => getFilter(state));
+  const contacts = data?.data?.contacts;
 
   const filtredContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
     return (
       contacts &&
-      contacts.filter(contact =>
+      contacts.filter((contact: { name: string }) =>
         contact?.name?.toLowerCase().includes(normalizedFilter),
       )
     );

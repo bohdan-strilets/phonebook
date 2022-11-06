@@ -18,6 +18,10 @@ export const Title = styled(Link)`
   :focus {
     color: var(--accent-text-color);
   }
+
+  @media screen and (min-width: 1440px) {
+    margin-right: 300px;
+  }
 `;
 
 export const TitleColor = styled.span`

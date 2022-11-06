@@ -5,32 +5,38 @@ import IAuthState from 'types/IAuthState';
 import IUser from 'types/IUser';
 import token from 'utilities/token';
 import API_URL from 'utilities/apiUrl';
+import {
+  IAuthRes,
+  IGetCurrentUserRes,
+  IUserSignup,
+  IUserSignin,
+} from 'types/IAuthOperationsRes';
 
 axios.defaults.baseURL = API_URL;
 
-const registerUser = createAsyncThunk<IAuthState, IUser>(
+const registerUser = createAsyncThunk<IAuthRes, IUserSignup>(
   'auth/registr',
   async user => {
     try {
       const { data } = await axios.post('api/auth/signup', user);
-      token.set(data.token);
+      token.set(data.data.token);
       return data;
     } catch (error) {}
   },
 );
 
-const loginUser = createAsyncThunk<IAuthState, IUser>(
+const loginUser = createAsyncThunk<IAuthRes, IUserSignin>(
   'auth/login',
   async user => {
     try {
       const { data } = await axios.post('api/auth/login', user);
-      token.set(data.token);
+      token.set(data.data.token);
       return data;
     } catch (error) {}
   },
 );
 
-const logoutUser = createAsyncThunk<IAuthState>('auth/logout', async () => {
+const logoutUser = createAsyncThunk('auth/logout', async () => {
   try {
     const { data } = await axios.get('api/auth/logout');
     token.unset();
@@ -39,7 +45,7 @@ const logoutUser = createAsyncThunk<IAuthState>('auth/logout', async () => {
 });
 
 const getCurrentUser = createAsyncThunk<
-  { name: string; email: string },
+  IGetCurrentUserRes,
   undefined,
   { state: RootState }
 >('user/refresh', async (_, thunkAPI) => {

@@ -24,6 +24,10 @@ export const NameWrapper = styled.div`
 `;
 
 export const IconUser = styled.p<{ background?: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
@@ -32,8 +36,9 @@ export const IconUser = styled.p<{ background?: string }>`
     background ? background : 'var(--accent-bg-color)'};
   color: var(--main-bg-color);
 
+  width: 40px;
+  height: 40px;
   margin-right: 30px;
-  padding: 7px 15px;
 `;
 
 export const Name = styled.p`

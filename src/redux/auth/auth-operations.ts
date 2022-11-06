@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from 'redux/store';
-import IAuthState from 'types/IAuthState';
-import IUser from 'types/IUser';
 import token from 'utilities/token';
 import API_URL from 'utilities/apiUrl';
 import {

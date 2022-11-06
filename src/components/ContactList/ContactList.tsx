@@ -8,6 +8,7 @@ import Loader from 'components/Loader';
 import NotFound from 'components/NotFound';
 import Pagination from 'components/Pagination';
 
+import { IContactList } from 'types/IContactList';
 import { Wrapper, List, Item } from './ContactList.styled';
 
 const ContactList: React.FC = () => {
@@ -39,33 +40,19 @@ const ContactList: React.FC = () => {
         {filteredContactList &&
           filteredContactList
             .slice(firstContentIndex, lastContentIndex)
-            .map(
-              ({
-                _id,
-                name,
-                phone,
-                email,
-                favorite,
-              }: {
-                _id: string;
-                name: string;
-                phone: string;
-                email: string;
-                favorite: boolean;
-              }) => {
-                return (
-                  <Item key={_id}>
-                    <Contact
-                      id={_id}
-                      name={name}
-                      phone={phone}
-                      email={email}
-                      favorite={favorite}
-                    />
-                  </Item>
-                );
-              },
-            )}
+            .map(({ _id, name, phone, email, favorite }: IContactList) => {
+              return (
+                <Item key={_id}>
+                  <Contact
+                    id={_id}
+                    name={name}
+                    phone={phone}
+                    email={email}
+                    favorite={favorite}
+                  />
+                </Item>
+              );
+            })}
       </List>
 
       <Pagination

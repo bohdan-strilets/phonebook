@@ -1,5 +1,7 @@
-import { IContact } from './IContact';
-
-type IContactList = IContact[];
-
-export default IContactList;
+export interface IContactList {
+  _id: string;
+  name: string;
+  phone: string;
+  email: string;
+  favorite: boolean;
+}

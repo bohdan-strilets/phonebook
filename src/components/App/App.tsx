@@ -14,6 +14,7 @@ const AddContactPage = lazy(() => import('pages/AddContactPage'));
 const ChangeContactPage = lazy(() => import('pages/ChangeContactPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
+const FavoritesPage = lazy(() => import('pages/FavoritesPage'));
 
 const App: React.FC = () => {
   const { isRefreshing } = useRefreshCurrentUser();
@@ -34,7 +35,7 @@ const App: React.FC = () => {
           <Route
             path="/contacts/*"
             element={
-              <PrivateRoute redirectTo="/contacts">
+              <PrivateRoute redirectTo="/">
                 <ContactsPage />
               </PrivateRoute>
             }
@@ -42,17 +43,17 @@ const App: React.FC = () => {
           <Route
             path="/contacts/add"
             element={
-              <PublicRoute>
+              <PrivateRoute redirectTo="/">
                 <AddContactPage />
-              </PublicRoute>
+              </PrivateRoute>
             }
           />
           <Route
             path="/contacts/edit/:contactId"
             element={
-              <PublicRoute>
+              <PrivateRoute redirectTo="/">
                 <ChangeContactPage />
-              </PublicRoute>
+              </PrivateRoute>
             }
           />
           <Route
@@ -69,6 +70,14 @@ const App: React.FC = () => {
               <PublicRoute restricted>
                 <LoginPage />
               </PublicRoute>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <PrivateRoute redirectTo="/">
+                <FavoritesPage />
+              </PrivateRoute>
             }
           />
           <Route

@@ -11,9 +11,9 @@ export const Button = styled.button<{ background?: string }>`
   align-items: center;
   justify-content: center;
 
-  width: 40px;
-  height: 40px;
-  margin-right: 15px;
+  width: 30px;
+  height: 30px;
+  margin-right: 7px;
 
   background-color: ${({ background }) =>
     background ? background : 'var(--accent-bg-color)'};
@@ -33,8 +33,18 @@ export const Button = styled.button<{ background?: string }>`
   :last-child {
     margin-right: 0;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
 `;
 
 export const Points = styled.p`
-  margin-right: 15px;
+  margin-right: 7px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: 15px;
+  }
 `;

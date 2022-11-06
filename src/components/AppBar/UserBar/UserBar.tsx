@@ -7,6 +7,7 @@ import {
   UserName,
   Email,
   Button,
+  Icon,
 } from './UserBar.styled';
 import { getName, getEmail, getAvatar } from 'redux/auth/auth-selecors';
 import useLogoutUser from 'hooks/useLogoutUser';
@@ -31,6 +32,7 @@ function UserBar() {
       </GroupWrapper>
       <Button type="button" onClick={logout}>
         Logout
+        <Icon />
       </Button>
     </Wrapper>
   );

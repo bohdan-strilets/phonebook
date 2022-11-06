@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { IoLogOutSharp } from 'react-icons/io5';
 
 export const Wrapper = styled.div`
   @media screen and (min-width: 1440px) {
@@ -69,4 +70,10 @@ export const Button = styled.button`
   @media screen and (max-width: 1439px) {
     width: 100%;
   }
+`;
+
+export const Icon = styled(IoLogOutSharp)`
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
 `;

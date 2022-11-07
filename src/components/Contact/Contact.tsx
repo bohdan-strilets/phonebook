@@ -1,17 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import useShowModal from 'hooks/useShowModal';
 import { useChangeFavoriteMutation } from 'redux/contacts/contact-api';
+
 import getFirstLetter from 'utilities/getFirstLetter';
 import getRandomHexColor from 'utilities/getRandomHexColor';
+import { IContactState } from 'types/IContact';
 
 import { FaTrash, FaUserEdit } from 'react-icons/fa';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import Modal from 'components/Modal';
 import DeletingContact from 'components/DeletingContact';
+import ContactInformation from 'components/ContactInformation';
 
 import {
   Wrapper,
+  Guard,
   NameWrapper,
   IconUser,
   Name,
@@ -26,20 +30,13 @@ import {
   StarIcon,
 } from './Contact.styled';
 
-const Contact = ({
-  id,
-  name,
-  phone,
-  email,
-  favorite,
-}: {
-  id: string;
-  name: string;
-  phone: string;
-  email: string;
-  favorite: boolean;
-}) => {
-  const { showModal, toggleModal } = useShowModal(false);
+const Contact = ({ id, name, phone, email, favorite }: IContactState) => {
+  const {
+    showContactInfoModal,
+    toggleContactInfoModal,
+    showDeleteContactModal,
+    toggleDeleteContactModal,
+  } = useShowModal(false);
   const navigate = useNavigate();
   const [changeFavorite] = useChangeFavoriteMutation();
 
@@ -55,36 +52,48 @@ const Contact = ({
 
   return (
     <>
-      {showModal && (
-        <Modal onClose={toggleModal} title={name}>
-          <DeletingContact id={id} name={name} toggleModal={toggleModal} />
+      {showDeleteContactModal && (
+        <Modal onClose={toggleDeleteContactModal} title={name}>
+          <DeletingContact
+            id={id}
+            name={name}
+            toggleModal={toggleDeleteContactModal}
+          />
+        </Modal>
+      )}
+
+      {showContactInfoModal && (
+        <Modal onClose={toggleContactInfoModal} title={name}>
+          <ContactInformation id={id} />
         </Modal>
       )}
 
       <Wrapper>
-        <NameWrapper>
-          <IconUser background={getRandomHexColor()}>
-            {getFirstLetter(name)}
-          </IconUser>
-          <Name>{name}</Name>
-        </NameWrapper>
+        <Guard onClick={toggleContactInfoModal}>
+          <NameWrapper>
+            <IconUser background={getRandomHexColor()}>
+              {getFirstLetter(name)}
+            </IconUser>
+            <Name>{name}</Name>
+          </NameWrapper>
 
-        <DataWrapper>
-          <Number>
-            <NumberIcon />
-            {phone}
-          </Number>
-          {email !== '' && (
-            <Email>
-              <EmailIcon />
-              {email}
-            </Email>
-          )}
-        </DataWrapper>
+          <DataWrapper>
+            <Number>
+              <NumberIcon />
+              {phone}
+            </Number>
+            {email !== '' && (
+              <Email>
+                <EmailIcon />
+                {email}
+              </Email>
+            )}
+          </DataWrapper>
+        </Guard>
 
         <ButtonList>
           <ButtonItem>
-            <Button type="button" onClick={toggleModal}>
+            <Button type="button" onClick={toggleDeleteContactModal}>
               <FaTrash />
             </Button>
           </ButtonItem>

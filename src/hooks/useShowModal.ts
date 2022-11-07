@@ -1,10 +1,19 @@
 import { useState } from 'react';
 
 const useShowModal = (option: boolean) => {
-  const [showModal, setShowModal] = useState<boolean>(option);
-  const toggleModal = () => setShowModal(prevState => !prevState);
+  const [showContactInfoModal, setShowContactInfoModal] = useState(option);
+  const [showDeleteContactModal, setShowDeleteContactModal] = useState(option);
 
-  return { toggleModal, showModal };
+  const toggleContactInfoModal = () => setShowContactInfoModal(state => !state);
+  const toggleDeleteContactModal = () =>
+    setShowDeleteContactModal(state => !state);
+
+  return {
+    showContactInfoModal,
+    toggleContactInfoModal,
+    showDeleteContactModal,
+    toggleDeleteContactModal,
+  };
 };
 
 export default useShowModal;

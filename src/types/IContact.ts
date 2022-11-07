@@ -15,3 +15,11 @@ export type IContactToServer = {
   phone?: string;
   email?: string;
 };
+
+export interface IContactState {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  favorite: boolean;
+}

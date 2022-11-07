@@ -17,6 +17,18 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Guard = styled.div`
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+  }
+`;
+
 export const NameWrapper = styled.div`
   display: flex;
   align-items: center;

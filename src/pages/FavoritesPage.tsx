@@ -5,7 +5,7 @@ import FavoriteList from 'components/FavoriteList';
 import Message from 'components/Message';
 
 const FavoritesPage: React.FC<{}> = () => {
-  const { data, isFetching, refetch } = useGetFavoritesContactsQuery();
+  const { data } = useGetFavoritesContactsQuery();
   const favorite = data?.favoriteData;
 
   return (

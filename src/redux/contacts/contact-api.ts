@@ -30,6 +30,10 @@ export const contactApi = createApi({
       providesTags: ['Contacts'],
     }),
 
+    getContactById: builder.query<any, { contactId: string }>({
+      query: ({ contactId }) => ({ url: `/${contactId}` }),
+    }),
+
     deleteContact: builder.mutation({
       query: (contactId: string) => ({
         url: `/${contactId}`,
@@ -70,6 +74,7 @@ export const contactApi = createApi({
 export const {
   useGetContactsQuery,
   useGetFavoritesContactsQuery,
+  useGetContactByIdQuery,
   useDeleteContactMutation,
   useCreateContactMutation,
   useChangeContactMutation,

@@ -2,11 +2,13 @@ import { useEffect } from 'react';
 import { useGetContactsQuery } from 'redux/contacts/contact-api';
 import useFiltredContacts from 'hooks/useFiltredContacts';
 import usePagination from 'hooks/usePagination';
+import useSorting from 'hooks/useSorting';
 
 import Contact from 'components/Contact/Contact';
 import Loader from 'components/Loader';
 import NotFound from 'components/NotFound';
 import Pagination from 'components/Pagination';
+import DropDownList from 'components/DropDownList';
 
 import { IContactList } from 'types/IContactList';
 import { Wrapper, List, Item } from './ContactList.styled';
@@ -14,6 +16,7 @@ import { Wrapper, List, Item } from './ContactList.styled';
 const ContactList: React.FC = () => {
   const { filteredContactList } = useFiltredContacts();
   const { isFetching, error, refetch } = useGetContactsQuery();
+  const { sort, getValue } = useSorting(filteredContactList);
   const {
     firstContentIndex,
     lastContentIndex,
@@ -28,6 +31,8 @@ const ContactList: React.FC = () => {
     count: filteredContactList.length,
   });
 
+  sort();
+
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -36,6 +41,15 @@ const ContactList: React.FC = () => {
     <Wrapper>
       {isFetching && <Loader />}
       {error && <NotFound data={error} status={error} />}
+
+      <DropDownList
+        options={['Alphabet A-Z', 'Alphabet Z-A', 'Date creation']}
+        label="Sorting by..."
+        top="53px"
+        right="10px"
+        getValue={getValue}
+      />
+
       <List>
         {filteredContactList &&
           filteredContactList

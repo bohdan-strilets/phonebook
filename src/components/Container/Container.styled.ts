@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const ContainerWrapper = styled.div`
+  position: relative;
+
   width: 320px;
   margin: 0 auto;
   padding: 50px 10px 50px 10px;

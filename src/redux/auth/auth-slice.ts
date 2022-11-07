@@ -67,6 +67,12 @@ export const authSlice = createSlice({
           }
           state.isRefreshing = false;
         } catch (error) {}
+      })
+
+      .addCase(operations.changeAvatar.fulfilled, (state, action) => {
+        try {
+          state.user.avatarURL = action.payload.avatarURL;
+        } catch (error) {}
       });
   },
 });

@@ -3,7 +3,6 @@ import { IContact } from 'types/IContact';
 
 const useSorting = (arr: IContact[]) => {
   const [value, setValue] = useState<null | string>(null);
-  console.log(value);
 
   const types = {
     DATE_CREATION: 'Date creation',

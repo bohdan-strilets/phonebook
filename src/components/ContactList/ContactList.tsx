@@ -13,7 +13,7 @@ import DropDownList from 'components/DropDownList';
 import { IContactList } from 'types/IContactList';
 import { Wrapper, List, Item } from './ContactList.styled';
 
-const ContactList: React.FC = () => {
+const ContactList: React.FC<{}> = () => {
   const { filteredContactList } = useFiltredContacts();
   const { isFetching, error, refetch } = useGetContactsQuery();
   const { sort, getValue } = useSorting(filteredContactList);

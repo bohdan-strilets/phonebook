@@ -61,11 +61,22 @@ const getCurrentUser = createAsyncThunk<
   } catch (error) {}
 });
 
+const changeAvatar = createAsyncThunk<{ avatarURL: string }, any>(
+  'user/change-avatar',
+  async avatar => {
+    try {
+      const { data } = await axios.patch('api/user/avatars', avatar);
+      return data;
+    } catch (error) {}
+  },
+);
+
 const operations = {
   registerUser,
   loginUser,
   logoutUser,
   getCurrentUser,
+  changeAvatar,
 };
 
 export default operations;

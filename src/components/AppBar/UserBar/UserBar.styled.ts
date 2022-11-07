@@ -24,7 +24,15 @@ export const GroupWrapper = styled.div`
 export const Avatar = styled.img`
   width: 50px;
   height: 50px;
+
   border-radius: 50%;
+  transition: opacity var(--main-hover-animation);
+
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.6;
+  }
 `;
 
 export const TextWrapper = styled.div`

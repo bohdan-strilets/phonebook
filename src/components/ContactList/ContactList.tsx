@@ -69,16 +69,18 @@ const ContactList: React.FC<{}> = () => {
             })}
       </List>
 
-      <Pagination
-        contentPerPage={3}
-        filteredContactList={filteredContactList}
-        gaps={gaps}
-        nextPage={nextPage}
-        page={page}
-        prevPage={prevPage}
-        setPage={setPage}
-        totalPages={totalPages}
-      />
+      {filteredContactList && filteredContactList.length > 9 && (
+        <Pagination
+          contentPerPage={3}
+          filteredContactList={filteredContactList}
+          gaps={gaps}
+          nextPage={nextPage}
+          page={page}
+          prevPage={prevPage}
+          setPage={setPage}
+          totalPages={totalPages}
+        />
+      )}
     </Wrapper>
   );
 };
